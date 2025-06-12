@@ -18,9 +18,100 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import BadgeLabel from "./badge-label";
 import CountBadge from "./count-badge";
 
+type FooterState = "microphone" | "pause" | "send";
+
 const SupportModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeBadge, setActiveBadge] = useState<string>("");
+  const [footerState, setFooterState] = useState<FooterState>("microphone");
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleMicrophoneClick = () => {
+    setFooterState("pause");
+  };
+
+  const handlePauseClick = () => {
+    setFooterState("send");
+  };
+
+  const handleSendClick = () => {
+    console.log("Sending message:", inputValue);
+    setInputValue("");
+    setFooterState("microphone");
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    if (value.trim() && footerState === "microphone") {
+      setFooterState("send");
+    } else if (!value.trim() && footerState === "send") {
+      setFooterState("microphone");
+    }
+  };
+
+  const renderActionButton = () => {
+    switch (footerState) {
+      case "microphone":
+        return (
+          <button
+            onClick={handleMicrophoneClick}
+            className="flex-shrink-0  p-1 cursor-poiner"
+            aria-label="Start voice recording"
+          >
+            <Image
+              src="/microphone.svg"
+              alt="Microphone"
+              width={24}
+              height={24}
+              priority
+              className="object-contain"
+            />
+          </button>
+        );
+
+      case "pause":
+        return (
+          <button
+            onClick={handlePauseClick}
+            className="flex-shrink-0 p-1 cursor-poiner"
+            aria-label="Stop recording"
+          >
+            <Image
+              src="/stop.svg"
+              alt="Stop"
+              width={24}
+              height={24}
+              priority
+              className="object-contain"
+            />
+          </button>
+        );
+
+      case "send":
+        return (
+          <button
+            onClick={handleSendClick}
+            className="flex-shrink-0 p-1"
+            aria-label="Send message"
+            disabled={!inputValue.trim()}
+          >
+            <Image
+              src="/send.svg"
+              alt="Send"
+              width={24}
+              height={24}
+              priority
+              className="object-contain"
+            />
+          </button>
+        );
+
+      default:
+        return null;
+    }
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -51,14 +142,14 @@ const SupportModal: React.FC = () => {
 
       <DialogContent
         showCloseButton={false}
-        className="gap-0 bg-[#f2eeec] border-8 border-[#e0d6d0] max-w-[354px] sm:max-w-[425px]"
+        className="p-0 gap-0 bg-[#f2eeec] border-8 border-[#e0d6d0] max-w-[354px] sm:max-w-[425px]"
       >
-        <div className="max-h-[542px] overflow-scroll scrollbar-hide">
+        <div className="p-4 max-h-[542px] overflow-scroll scrollbar-hide">
           <DialogTitle asChild>
             <VisuallyHidden>Bing Chat Support</VisuallyHidden>
           </DialogTitle>
 
-          <div className="flex items-center justify-between absolute  -top-13 w-full">
+          <div className="flex items-center justify-between absolute left-0 -top-13 w-full">
             <div className="flex gap-2.5 items-center">
               <Button
                 style={{ boxShadow: "0px 4px 4px 0px #00000040 inset" }}
@@ -160,12 +251,14 @@ const SupportModal: React.FC = () => {
                 active={activeBadge === "recommended"}
                 onClick={() => setActiveBadge("recommended")}
               />
+
               <CountBadge
                 count={4}
                 text="Deals"
                 active={activeBadge === "deals"}
                 onClick={() => setActiveBadge("deals")}
               />
+
               <CountBadge
                 count={5}
                 text="Coupons"
@@ -218,8 +311,42 @@ const SupportModal: React.FC = () => {
             </p>
           </section>
         </div>
-        <DialogFooter>
-          <p>accc</p>
+        <DialogFooter className="p-2 bg-[#e0d6d0]">
+          <div
+            className="rounded-4xl bg-[#FFFFFF99] h-12 px-3 py-2 flex items-center gap-4 w-full"
+            style={{ boxShadow: "0px 4px 4px 0px #00000014" }}
+          >
+            <Button
+              style={{ boxShadow: "0px 4px 4px 0px #0000001F inset" }}
+              size="lg"
+              className="
+            h-9 w-9 rounded-full 
+            p-0 flex items-center justify-center
+            bg-white "
+            >
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={16}
+                height={16}
+                priority
+                className="object-contain"
+              />
+            </Button>
+            {footerState === "pause" ? (
+              <div className="flex items-center justify-center h-full w-full">
+                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+              </div>
+            ) : (
+              <input
+                className="border-none bg-[#FFFFFFCC] h-full w-full placeholder:text-[#A3ACBA] text-xs p-3 rounded-md"
+                placeholder="chat to shop"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+            )}
+            {renderActionButton()}
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
