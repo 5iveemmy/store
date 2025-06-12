@@ -69,3 +69,34 @@ export const bestSellingProducts = [
     price: "$230,099",
   },
 ];
+
+export const christmasItems = [
+  {
+    image: "/lawn-chair.jpg",
+    name: "Lawn Chair",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+  {
+    image: "/brown-shoe.jpg",
+    name: "Shoes",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+  {
+    image: "/clippers.jpg",
+    name: "Clippers",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+  {
+    image: "/towels.jpg",
+    name: "Towels",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+];
