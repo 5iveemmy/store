@@ -23,6 +23,18 @@ export const featuredCategory = [
     height: 48,
     width: 48,
   },
+  {
+    image: "/storage.png",
+    title: "Duplicate Storage",
+    height: 48,
+    width: 48,
+  },
+  {
+    image: "/ram.png",
+    title: "Duplicate Ram",
+    height: 48,
+    width: 48,
+  },
 ];
 
 export const bestSellingProducts = [
