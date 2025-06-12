@@ -26,13 +26,17 @@ const Navbar = () => {
             />
           </button>
 
-          <Link href="/" aria-label="Homepage">
+          <Link
+            href="/"
+            aria-label="Homepage"
+            className="relative w-[90px] aspect-[90/24]"
+          >
             <Image
-              priority
-              width={90}
-              height={24}
               src="/logo.svg"
               alt="Company Logo"
+              fill
+              priority
+              className="object-contain"
             />
           </Link>
         </div>

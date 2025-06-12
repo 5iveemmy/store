@@ -100,9 +100,9 @@ const Home = () => {
               aria-label="Featured category carousel"
             >
               <CarouselContent className="md:gap-2">
-                {featuredCategory.map((category) => (
+                {featuredCategory.map((category, index) => (
                   <CarouselItem
-                    key={category.title}
+                    key={index}
                     showDots={false}
                     className="basis-[120px] lg:basis-[160px] flex-shrink-0"
                     aria-label={`Category: ${category.title}`}

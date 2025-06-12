@@ -21,6 +21,11 @@ const BestSellingCard = ({ image, name, price }: Props) => {
           fill
           alt={`${name} product image`}
           className="object-cover rounded-lg"
+          sizes="(max-width: 639px) calc(50vw - 20px), 
+          (max-width: 767px) 160px,
+          (max-width: 1023px) 160px,
+          (max-width: 1279px) 180px,
+          200px"
           loading="lazy"
           quality={80}
         />

@@ -24,6 +24,7 @@ const CategoryCard = ({ image, title, height, width }: Props) => {
           alt={`${title} category icon`}
           width={width}
           height={height}
+          style={{ width: "auto", height: "auto" }}
           className="object-contain max-h-full max-w-full"
           sizes="(max-width: 768px) 48px, (max-width: 1024px) 60px, 72px"
         />
