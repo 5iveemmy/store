@@ -14,7 +14,7 @@ import React from "react";
 
 const images = ["/banner.png", "/banner.png"];
 
-const HeroSection = () => {
+const Home = () => {
   const plugin = React.useRef(Autoplay({ delay: 5000 }));
 
   return (
@@ -119,4 +119,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Home;
