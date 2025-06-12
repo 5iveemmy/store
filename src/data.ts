@@ -100,3 +100,34 @@ export const christmasItems = [
     ratingCount: 188,
   },
 ];
+
+export const newProducts = [
+  {
+    image: "/microwave.jpg",
+    name: "Microwave",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+  {
+    image: "/vintage.jpg",
+    name: "Dress",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+  {
+    image: "/purple-backpack.jpg",
+    name: "Backpack",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+  {
+    image: "/high-heels.jpg",
+    name: "Shoes",
+    price: "$59,000",
+    rating: 4.7,
+    ratingCount: 188,
+  },
+];
