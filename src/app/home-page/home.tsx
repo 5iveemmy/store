@@ -1,7 +1,8 @@
 "use client";
-import BestSellingCard from "@st/components/best-selling-card";
+import ItemCard from "@st/components/item-card";
 import CategoryCard from "@st/components/category-card";
 import { InputWithIcon } from "@st/components/input-with-Icon";
+import SupportModal from "@st/components/support-modal";
 import {
   Carousel,
   CarouselContent,
@@ -126,7 +127,7 @@ const Home = () => {
             aria-label="List of best selling products"
           >
             {bestSellingProducts.map((product) => (
-              <BestSellingCard
+              <ItemCard
                 key={`${product.image}-${product.name}`}
                 image={product.image}
                 name={product.name}
@@ -136,6 +137,7 @@ const Home = () => {
           </div>
         </section>
       </section>
+      <SupportModal />
     </main>
   );
 };
