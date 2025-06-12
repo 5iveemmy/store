@@ -39,6 +39,7 @@ const HeroSection = () => {
           aria-label="Search through products"
         />
       </section>
+
       <section
         aria-labelledby="promotional-carousel"
         className="bg-[#EBF0F4] p-4"
@@ -61,14 +62,16 @@ const HeroSection = () => {
                 key={`${image}-${index}`}
                 aria-label={`Promotional offer ${index + 1}`}
               >
-                <Image
-                  priority
-                  width="344"
-                  height="140"
-                  className="rounded-xl"
-                  src={image}
-                  alt={`Promotional banner ${index + 1}`}
-                />
+                <div className="relative w-full aspect-[344/140]">
+                  <Image
+                    priority
+                    fill
+                    className="rounded-xl object-cover"
+                    src={image}
+                    alt={`Promotional banner ${index + 1}`}
+                    sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
+                  />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -95,12 +98,12 @@ const HeroSection = () => {
               className="w-full relative"
               aria-label="Featured categories carousel"
             >
-              <CarouselContent>
+              <CarouselContent className="md:gap-2">
                 {featuredCategory.map((category) => (
                   <CarouselItem
                     key={category.title}
                     showDots={false}
-                    style={{ flex: "0 0 120px" }}
+                    className="basis-[120px] lg:basis-[160px] flex-shrink-0"
                     aria-label={`Category: ${category.title}`}
                     tabIndex={0}
                   >
