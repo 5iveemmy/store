@@ -213,7 +213,7 @@ const SupportModal: React.FC = () => {
                   price={item.price}
                   rating={item.rating}
                   ratingCount={item.ratingCount}
-                  nameFontClass="text-[12px] font-medium"
+                  nameFontClass="text-[12px] font-medium min-h-[2em]"
                   priceFontClass="text-[10px] font-semibold"
                   imageWrapperClass="relative w-[164px] h-[112px] mb-2"
                   imageSizes="164px"
@@ -277,8 +277,8 @@ const SupportModal: React.FC = () => {
                     price={item.price}
                     rating={item.rating}
                     ratingCount={item.ratingCount}
-                    nameFontClass="text-[12px] font-medium"
-                    priceFontClass="text-[10px] font-semibold"
+                    nameFontClass="text-[12px] font-medium min-h-[2em]"
+                    priceFontClass="text-[10px] font-semibold "
                     imageWrapperClass="relative w-[164px] h-[112px] mb-2"
                     imageSizes="164px"
                   />
