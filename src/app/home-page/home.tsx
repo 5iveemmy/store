@@ -1,12 +1,13 @@
 "use client";
+import BestSellingCard from "@st/components/best-selling-card";
 import CategoryCard from "@st/components/category-card";
-import { InputWithIcon } from "@st/components/inputWithIcon";
+import { InputWithIcon } from "@st/components/input-with-Icon";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@st/components/ui/carousel";
-import { featuredCategory } from "@st/data";
+import { bestSellingProducts, featuredCategory } from "@st/data";
 import AutoScroll from "embla-carousel-auto-scroll";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -18,7 +19,7 @@ const Home = () => {
   const plugin = React.useRef(Autoplay({ delay: 5000 }));
 
   return (
-    <main className="mb-8">
+    <main className="mb-8 h-screen">
       <section aria-labelledby="search-section" className="mx-4 mb-3">
         <h2 id="search-section" className="sr-only">
           Search Products
@@ -42,7 +43,7 @@ const Home = () => {
 
       <section
         aria-labelledby="promotional-carousel"
-        className="bg-[#EBF0F4] p-4"
+        className="bg-[#EBF0F4] px-4 pt-4 pb-24"
       >
         <h2 id="promotional-carousel" className="sr-only">
           Promotional Offers
@@ -77,8 +78,8 @@ const Home = () => {
           </CarouselContent>
         </Carousel>
 
-        <section aria-labelledby="featured-categories" className="mt-8">
-          <h2 id="featured-categories" className="text-base font-bold pb-2">
+        <section aria-labelledby="featured-category" className="mt-8">
+          <h2 id="featured-category" className="text-base font-bold pb-2">
             Featured Category
           </h2>
           <div className="flex justify-between">
@@ -96,7 +97,7 @@ const Home = () => {
                 }),
               ]}
               className="w-full relative"
-              aria-label="Featured categories carousel"
+              aria-label="Featured category carousel"
             >
               <CarouselContent className="md:gap-2">
                 {featuredCategory.map((category) => (
@@ -112,6 +113,26 @@ const Home = () => {
                 ))}
               </CarouselContent>
             </Carousel>
+          </div>
+        </section>
+
+        <section aria-labelledby="best-selling" className="mt-8 px-4">
+          <h2 id="best-selling" className="text-base md:text-lg font-bold pb-2">
+            Best Selling Products
+          </h2>
+          <div
+            className="flex flex-wrap justify-between items-center gap-2 md:gap-3"
+            role="list"
+            aria-label="List of best selling products"
+          >
+            {bestSellingProducts.map((product) => (
+              <BestSellingCard
+                key={`${product.image}-${product.name}`}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+              />
+            ))}
           </div>
         </section>
       </section>
